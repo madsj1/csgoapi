@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const { HLTV } = require('hltv')
-const myHLTV = HLTV.createInstance({hltvUrl: 'https://us6.proxysite.com/process.php?d=doduen8hKtGIeg8UD7vww7s%3D&b=1'})
+const myHLTV = HLTV.createInstance({hltvUrl: 'https://translate.google.com/translate?hl=en&sl=da&tl=en&u=hltv.org'})
 
 const cors = require('cors')
 
@@ -10,14 +10,20 @@ var corsOptions = {
     origin: 'http://localhost:4200',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
   }
+app.use(cors(corsOptions))
 
-HLTV.getMatches().then((res) => {
-    HLTV.getMatches(function(matches){
-        return res.json(matches);
-    });
+
+
+myHLTV.getMatches().then((res) => {
+  myHLTV.getMatches().then(data => { console.log(JSON.stringify(data)); });
+});
+myHLTV.getMatch({id: 2306295}).then(res => {
+  console.log(res);
 });
 
 /*
+
+
 HLTV.getMatches().then((res) => {
     getMatches(matches => res.join(matches));
 });
