@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const { HLTV } = require('hltv')
+const HHLTV = require('hltv-api');
 const myHLTV = HLTV.createInstance({hltvUrl: 'https://translate.google.com/translate?hl=en&sl=da&tl=en&u=hltv.org'})
 
 const cors = require('cors')
@@ -12,11 +13,26 @@ var corsOptions = {
   }
 app.use(cors(corsOptions))
 
-
-
-myHLTV.getMatches().then((res) => {
-  myHLTV.getMatches().then(data => { console.log(JSON.stringify(data)); });
+app.get('/', (req, res) => {
+  HHLTV.getNews(news => res.json(news));
 });
+
+app.get('/results', (req, res) => {
+  HHLTV.getResults(results => res.json(results));
+});
+/*
+HLTV.getMatches().then((res) => {
+  HLTV.getMatches(matches => res.json(matches));
+});
+HLTV.getMatches().then((res) => {
+ // console.log(JSON.stringify(res));
+
+ res.length();
+  
+});
+
+HLTV.getMatches().then(data => { console.log(JSON.stringify(data)); });
+
 myHLTV.getMatch({id: 2306295}).then(res => {
   console.log(res);
 });
@@ -28,9 +44,6 @@ HLTV.getMatches().then((res) => {
     getMatches(matches => res.join(matches));
 });
 
-app.get('/', (req, res) => {
-    getNews(news => res.json(news));
-  });
   
   app.get('/results', (req, res) => {
     getResults(results => res.json(results));
