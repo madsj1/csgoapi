@@ -18,7 +18,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/matches', (req, res) => {
-  HLTV.getMatches().then(results => res.json(results));
+  HLTV.getMatches().then(matches => res.json(matches));
+});
+
+app.get('/results', (req, res) => {
+  HLTV.getResults().then(results => res.json(results));
 });
 
 /*
