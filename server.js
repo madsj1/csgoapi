@@ -17,13 +17,25 @@ app.get('/', (req, res) => {
   HHLTV.getNews(news => res.json(news));
 });
 
+app.get('/matches', (req, res) => {
+  HLTV.getMatches().then(results => res.json(results));
+});
+
+/*
 app.get('/results', (req, res) => {
   HHLTV.getResults(results => res.json(results));
 });
-/*
+
+HLTV.getMatches().then((res) => {
+  //console.log(JSON.stringify(res));
+  var util = require('util');
+  console.log(util.inspect(res));
+});
+
 HLTV.getMatches().then((res) => {
   HLTV.getMatches(matches => res.json(matches));
 });
+
 HLTV.getMatches().then((res) => {
  // console.log(JSON.stringify(res));
 
