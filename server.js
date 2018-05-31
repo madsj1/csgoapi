@@ -25,6 +25,16 @@ app.get('/results', (req, res) => {
   HLTV.getResults().then(results => res.json(results));
 });
 
+app.get('/streams', (req, res) => {
+  HLTV.getStreams().then(streams => res.json(streams));
+});
+
+app.get('/ranking', (req, res) => {
+  HLTV.getTeamRanking().then(ranking => res.json(ranking));
+});
+
+
+
 /*
 app.get('/results', (req, res) => {
   HHLTV.getResults(results => res.json(results));
