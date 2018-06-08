@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 const { HLTV } = require('hltv')
+/*
 const HHLTV = require('hltv-api');
+*/
 const myHLTV = HLTV.createInstance({hltvUrl: 'https://translate.google.com/translate?hl=en&sl=da&tl=en&u=hltv.org'})
 
 const cors = require('cors')
@@ -33,9 +35,30 @@ app.get('/ranking', (req, res) => {
   HLTV.getTeamRanking().then(ranking => res.json(ranking));
 });
 
-
+app.get('/match/:id', (req, res) => {
+  const id = req.params.id;
+  //res.json({id})
+  HLTV.getMatch({id: id}).then(match => res.json(match));
+});
 
 /*
+app.get('/results1', (req, res) => {
+  HHLTV.getResults(results => res.json(results));
+});
+
+app.get('/:matchId(*)', (req, res) => {
+  const { matchId } = req.params;
+  HHLTV.getMatches(matchId, (stats) => res.json(stats));
+});
+
+app.get('/:matchId(*)', function(req, res) {
+  HHLTV.getMatches(matchId, function(stats) {
+    return res.json(stats);
+  });
+});
+
+
+
 app.get('/results', (req, res) => {
   HHLTV.getResults(results => res.json(results));
 });
