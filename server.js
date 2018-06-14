@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 
 const { HLTV } = require('hltv')
-/*
-const HHLTV = require('hltv-api');
-*/
+
+//const HHLTV = require('hltv-api');
+
 const myHLTV = HLTV.createInstance({hltvUrl: 'https://translate.google.com/translate?hl=en&sl=da&tl=en&u=hltv.org'})
 
 const cors = require('cors')
@@ -13,12 +13,15 @@ var corsOptions = {
     origin: 'http://localhost:4200',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
   }
-app.use(cors(corsOptions))
 
+var JSONItems = [];
+
+app.use(cors(corsOptions))
+/*
 app.get('/', (req, res) => {
   HHLTV.getNews(news => res.json(news));
 });
-
+*/
 app.get('/matches', (req, res) => {
   HLTV.getMatches().then(matches => res.json(matches));
 });
@@ -37,10 +40,13 @@ app.get('/ranking', (req, res) => {
 
 app.get('/match/:id', (req, res) => {
   const id = req.params.id;
-  //res.json({id})
   HLTV.getMatch({id: id}).then(match => res.json(match));
 });
 
+app.get('/team/:id', (req, res) => {
+  const id = req.params.id;
+  HLTV.getTeam({id: id}).then(team => res.json(team));
+});
 /*
 app.get('/results1', (req, res) => {
   HHLTV.getResults(results => res.json(results));
@@ -56,8 +62,6 @@ app.get('/:matchId(*)', function(req, res) {
     return res.json(stats);
   });
 });
-
-
 
 app.get('/results', (req, res) => {
   HHLTV.getResults(results => res.json(results));
@@ -86,22 +90,18 @@ myHLTV.getMatch({id: 2306295}).then(res => {
   console.log(res);
 });
 
-/*
-
-
 HLTV.getMatches().then((res) => {
     getMatches(matches => res.join(matches));
 });
-
   
-  app.get('/results', (req, res) => {
-    getResults(results => res.json(results));
-  });
+app.get('/results', (req, res) => {
+  getResults(results => res.json(results));
+});
   
-  app.get('/:matchId(*)', (req, res) => {
-    const { matchId } = req.params;
-    getMatches(matchId, (stats) => res.json(stats));
-  });
+app.get('/:matchId(*)', (req, res) => {
+  const { matchId } = req.params;
+  getMatches(matchId, (stats) => res.json(stats));
+});
   */
   const PORT = 3000;
   
