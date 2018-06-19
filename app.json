@@ -1,0 +1,7 @@
+{
+    "name":"Node.js Getting Started",
+    "description":"CSGO api using express",
+    "repository":"https://github.com/madsj1/csgoapi",
+    "keyword":["node","express","static"],
+    "image":"heroku/nodejs"
+}

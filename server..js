@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.set('port',(process.env.PORT || 3000));
+
 const { HLTV } = require('hltv')
 
 //const HHLTV = require('hltv-api');
@@ -47,6 +49,10 @@ app.get('/team/:id', (req, res) => {
   const id = req.params.id;
   HLTV.getTeam({id: id}).then(team => res.json(team));
 });
+
+/* app.get('/', function(request, response){
+  respoonse.render('index');
+} */
 /*
 app.get('/results1', (req, res) => {
   HHLTV.getResults(results => res.json(results));
@@ -103,8 +109,14 @@ app.get('/:matchId(*)', (req, res) => {
   getMatches(matchId, (stats) => res.json(stats));
 });
   */
-  const PORT = 3000;
+  
+  
+  app.listen(app.get ('port'), function() {
+    console.log(`Listening on port...`, app.get('port')); // eslint-disable-line no-console
+  });
+/* 
+  const PORT = 3000;   LOCALHOST
   
   app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`); // eslint-disable-line no-console
-  });
+    console.log(`Listening on port ${PORT}...`); 
+  }); */
