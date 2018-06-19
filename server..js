@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.set('port',(process.env.PORT || 3000));
+const port = process.env.PORT || 3000;
 
 const { HLTV } = require('hltv')
 
@@ -111,8 +111,8 @@ app.get('/:matchId(*)', (req, res) => {
   */
   
   
-  app.listen(app.get ('port'), function() {
-    console.log(`Listening on port...`, app.get('port')); // eslint-disable-line no-console
+  app.listen(port, () => {
+    console.log(`Listening on port...,${port}`); // eslint-disable-line no-console
   });
 /* 
   const PORT = 3000;   LOCALHOST
