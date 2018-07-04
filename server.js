@@ -12,7 +12,7 @@ const myHLTV = HLTV.createInstance({hltvUrl: 'https://translate.google.com/trans
 const cors = require('cors')
 
 var corsOptions = {
-    origin: 'http://localhost:4200',
+    origin: 'https://eesports-6efa3.firebaseapp.com',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
   }
 
