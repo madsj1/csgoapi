@@ -54,60 +54,6 @@ app.get('/team/:id', (req, res) => {
   respoonse.render('index');
 } */
 /*
-app.get('/results1', (req, res) => {
-  HHLTV.getResults(results => res.json(results));
-});
-
-app.get('/:matchId(*)', (req, res) => {
-  const { matchId } = req.params;
-  HHLTV.getMatches(matchId, (stats) => res.json(stats));
-});
-
-app.get('/:matchId(*)', function(req, res) {
-  HHLTV.getMatches(matchId, function(stats) {
-    return res.json(stats);
-  });
-});
-
-app.get('/results', (req, res) => {
-  HHLTV.getResults(results => res.json(results));
-});
-
-HLTV.getMatches().then((res) => {
-  //console.log(JSON.stringify(res));
-  var util = require('util');
-  console.log(util.inspect(res));
-});
-
-HLTV.getMatches().then((res) => {
-  HLTV.getMatches(matches => res.json(matches));
-});
-
-HLTV.getMatches().then((res) => {
- // console.log(JSON.stringify(res));
-
- res.length();
-  
-});
-
-HLTV.getMatches().then(data => { console.log(JSON.stringify(data)); });
-
-myHLTV.getMatch({id: 2306295}).then(res => {
-  console.log(res);
-});
-
-HLTV.getMatches().then((res) => {
-    getMatches(matches => res.join(matches));
-});
-  
-app.get('/results', (req, res) => {
-  getResults(results => res.json(results));
-});
-  
-app.get('/:matchId(*)', (req, res) => {
-  const { matchId } = req.params;
-  getMatches(matchId, (stats) => res.json(stats));
-});
   */
   
   app.listen(port, () => {
