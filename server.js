@@ -41,13 +41,13 @@ app.get('/ranking', (req, res) => {
 });
 
 app.get('/match/:id', (req, res) => {
-  const id = req.params.id;
-  HLTV.getMatch({id: id}).then(match => res.json(match));
+  const { id } = req.params;
+  HLTV.getMatch({id}).then(match => res.json(match));
 });
 
 app.get('/team/:id', (req, res) => {
-  const id = req.params.id;
-  HLTV.getTeam({id: id}).then(team => res.json(team));
+  const { id } = req.params;
+  HLTV.getTeam({id}).then(team => res.json(team));
 });
 
 /* app.get('/', function(request, response){
